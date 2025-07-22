@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lab name="SJVN Computer Networks Architecture" version="1" scripttimeout="300" lock="0">
+  <topology>
+    <nodes>
+      <node id="4" name="Cisco-ISP-Router" type="dynamips" template="c7200" image="c7200-adventerprisek9-mz.152-4.S6.image" idlepc="0x62f21000" nvram="128" ram="256" console="" delay="0" icon="Router-2D-Gen-White-S.svg" config="0" left="270" top="144">
+        <slot id="1" module="PA-4E"/>
+        <slot id="2" module="PA-4E"/>
+        <slot id="3" module="PA-4E"/>
+        <slot id="4" module="PA-FE-TX"/>
+        <interface id="16" name="e1/0" type="ethernet" network_id="1"/>
+        <interface id="17" name="e1/1" type="ethernet" network_id="4"/>
+      </node>
+      <node id="1" name="Firewall-Primary" type="qemu" template="sophosxg" image="sophosxg-fw-20.0.1" console="vnc" cpu="1" cpulimit="0" ram="2048" ethernet="4" uuid="b3122171-0a94-4fac-a76d-ce85902762ba" qemu_options="-machine type=pc,accel=kvm" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Firewall-2D-Sophos-S.svg" config="0" left="45" top="429">
+        <interface id="0" name="PortA" type="ethernet" network_id="2"/>
+        <interface id="1" name="PortB" type="ethernet" network_id="7"/>
+        <interface id="2" name="PortC" type="ethernet" network_id="9"/>
+        <interface id="3" name="PortD" type="ethernet" network_id="14"/>
+      </node>
+      <node id="2" name="Firewall-Secondary" type="qemu" template="sophosxg" image="sophosxg-fw-20.0.1" console="vnc" cpu="1" cpulimit="0" ram="2048" ethernet="4" uuid="b7ba2601-3661-4a6e-a1db-2b33d2fdfb60" qemu_options="-machine type=pc,accel=kvm" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Firewall-2D-Sophos-S.svg" config="0" left="471" top="411">
+        <interface id="0" name="PortA" type="ethernet" network_id="3"/>
+        <interface id="1" name="PortB" type="ethernet" network_id="8"/>
+        <interface id="2" name="PortC" type="ethernet" network_id="9"/>
+        <interface id="3" name="PortD" type="ethernet" network_id="15"/>
+      </node>
+      <node id="6" name="Juniper-ISP-Switch" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="b73006e4-8e1c-4721-9f3d-97b1d5980ae0" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="258" top="309">
+        <interface id="0" name="fxp0" type="ethernet" network_id="3"/>
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="5"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="2"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="4"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="12"/>
+        <interface id="5" name="ge-0/0/4" type="ethernet" network_id="6"/>
+        <interface id="6" name="ge-0/0/5" type="ethernet" network_id="11"/>
+      </node>
+      <node id="3" name="Juniper-Switch" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="5932120c-35a8-48f5-a583-7038e7af7edf" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="273" top="570">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="7"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="8"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="16"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="17"/>
+      </node>
+      <node id="5" name="WIFI-DISTRIBUTION-SW" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="7d851ae4-6544-4817-ab7c-7863bc7f4daa" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="555" top="558">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="14"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="15"/>
+      </node>
+      <node id="8" name="MINI-FIREWALL" type="qemu" template="sophosxg" image="sophosxg-fw-20.0.1" console="vnc" cpu="1" cpulimit="0" ram="2048" ethernet="4" uuid="a8d56c95-f705-4db9-be83-688c743fcbdb" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Firewall-2D-Sophos-S.svg" config="0" left="1068" top="273">
+        <interface id="0" name="PortA" type="ethernet" network_id="12"/>
+        <interface id="1" name="PortB" type="ethernet" network_id="11"/>
+        <interface id="2" name="PortC" type="ethernet" network_id="13"/>
+        <interface id="3" name="PortD" type="ethernet" network_id="10"/>
+      </node>
+      <node id="9" name="MEETING-ROOM" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1065" top="426">
+        <interface id="0" name="eth0" type="ethernet" network_id="10"/>
+      </node>
+      <node id="7" name="JUNIPER-CORE-SW-1" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="d655d74c-51ca-42ad-b977-d24405e3366d" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="429" top="747">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="17"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="19"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="20"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="21"/>
+        <interface id="5" name="ge-0/0/4" type="ethernet" network_id="43"/>
+        <interface id="6" name="ge-0/0/5" type="ethernet" network_id="44"/>
+        <interface id="7" name="ge-0/0/6" type="ethernet" network_id="45"/>
+        <interface id="8" name="ge-0/0/7" type="ethernet" network_id="46"/>
+        <interface id="9" name="ge-0/0/8" type="ethernet" network_id="47"/>
+        <interface id="10" name="ge-0/0/9" type="ethernet" network_id="48"/>
+      </node>
+      <node id="10" name="JUNIPER-CORE-SW2" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="69610481-03cb-4097-908b-509d4580bdc9" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="63" top="756">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="16"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="18"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="20"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="21"/>
+      </node>
+      <node id="11" name="Juniper-Switch" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="bbdbdbde-4c73-438f-8112-71fb2e8cf9f0" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="270" top="945">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="18"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="19"/>
+      </node>
+      <node id="12" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1053" top="1617">
+        <interface id="0" name="eth0" type="ethernet" network_id="37"/>
+      </node>
+      <node id="13" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1020" top="882">
+        <interface id="0" name="eth0" type="ethernet" network_id="23"/>
+      </node>
+      <node id="14" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1020" top="825">
+        <interface id="0" name="eth0" type="ethernet" network_id="22"/>
+      </node>
+      <node id="15" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1023" top="1212">
+        <interface id="0" name="eth0" type="ethernet" network_id="31"/>
+      </node>
+      <node id="16" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1017" top="1845">
+        <interface id="0" name="eth0" type="ethernet" network_id="41"/>
+      </node>
+      <node id="17" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1053" top="1548">
+        <interface id="0" name="eth0" type="ethernet" network_id="36"/>
+      </node>
+      <node id="18" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1020" top="1746">
+        <interface id="0" name="eth0" type="ethernet" network_id="40"/>
+      </node>
+      <node id="19" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1038" top="1386">
+        <interface id="0" name="eth0" type="ethernet" network_id="33"/>
+      </node>
+      <node id="20" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1026" top="1146">
+        <interface id="0" name="eth0" type="ethernet" network_id="30"/>
+      </node>
+      <node id="21" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1038" top="1041">
+        <interface id="0" name="eth0" type="ethernet" network_id="27"/>
+      </node>
+      <node id="22" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="1041" top="984">
+        <interface id="0" name="eth0" type="ethernet" network_id="26"/>
+      </node>
+      <node id="23" name="VPC" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="954" top="1341">
+        <interface id="0" name="eth0" type="ethernet" network_id="32"/>
+      </node>
+      <node id="24" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="3e0384e0-76a1-46cf-a18b-8045ee2b70af" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="924" top="918">
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="24"/>
+      </node>
+      <node id="25" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="0b699226-0368-4023-b85b-16482767cdb7" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="963" top="1662">
+        <interface id="0" name="fxp0" type="ethernet" network_id="39"/>
+      </node>
+      <node id="26" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="04806989-cfd6-40ea-a2f0-4fe851911ba8" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="711" top="1779">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="42"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="40"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="41"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="48"/>
+      </node>
+      <node id="27" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="c7bff044-fc68-4dff-a376-4748bc1b1959" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="912" top="1077">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="25"/>
+      </node>
+      <node id="28" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="668989ed-ffe8-4260-a51f-e282c0486eae" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="846" top="1440">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="34"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="35"/>
+      </node>
+      <node id="29" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="71281588-6f84-45f0-83ef-3bbdf9844aba" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="993" top="1449">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="34"/>
+      </node>
+      <node id="30" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="dde4487c-91f3-4df0-8da6-844350d633a2" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="735" top="1377">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="32"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="33"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="35"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="46"/>
+      </node>
+      <node id="31" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="4e4982ca-0bc8-40c4-91a1-de0375a8b9b6" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="879" top="1872">
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="42"/>
+      </node>
+      <node id="32" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="abefdf3e-e7cf-44f0-a68e-d2924dbe5181" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="852" top="1248">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="28"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="29"/>
+      </node>
+      <node id="33" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="8c8b2f4d-8663-4dce-a51f-d5b5dbbc63e0" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="747" top="888">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="22"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="23"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="24"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="43"/>
+      </node>
+      <node id="34" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="fd3a3ca8-a5c4-4e1a-9a9d-ba385d26ccd6" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="WIFI-2D-AccessPoint-S.svg" config="0" left="984" top="1269">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="29"/>
+      </node>
+      <node id="35" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="23d5df42-6706-4457-8927-1fe4c3517f49" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="744" top="1014">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="25"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="26"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="27"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="44"/>
+      </node>
+      <node id="36" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="d760d144-ca6e-4832-90df-a4953b0750ac" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="729" top="1572">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="36"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="37"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="38"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="47"/>
+      </node>
+      <node id="37" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="dedeb939-6918-4992-9a57-844257cee6ee" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="735" top="1179">
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="28"/>
+        <interface id="2" name="ge-0/0/1" type="ethernet" network_id="30"/>
+        <interface id="3" name="ge-0/0/2" type="ethernet" network_id="31"/>
+        <interface id="4" name="ge-0/0/3" type="ethernet" network_id="45"/>
+      </node>
+      <node id="38" name="vEX" type="qemu" template="vjunosswitch" image="vjunosswitch-23.1R1.8" console="telnet" cpu="4" cpulimit="0" ram="16384" ethernet="11" uuid="57945f13-d73f-4352-ae97-4dd7bfe380f0" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -smbios type=1,product=VM-VEX -cpu IvyBridge,ibpb=on,md-clear=on,spec-ctrl=on,ssbd=on,vmx=on" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Juniper-2D-Switch-S.svg" config="0" left="816" top="1647">
+        <interface id="0" name="fxp0" type="ethernet" network_id="39"/>
+        <interface id="1" name="ge-0/0/0" type="ethernet" network_id="38"/>
+      </node>
+    </nodes>
+    <networks>
+      <network id="1" type="pnet0" name="BSNL" left="288" top="36" visibility="1" icon="Cloud-2D-Green-small-S.svg"/>
+      <network id="5" type="bridge" name="PowerGrid" left="477" top="75" visibility="1" icon="Cloud-2D-Yellow-small-S.svg"/>
+      <network id="6" type="bridge" name="MPLS" left="117" top="87" visibility="1" icon="Cloud-2D-Blue-small-S.svg"/>
+      <network id="9" type="bridge" name="Net-SJVN-Firewall-Primaryiface_2" left="789" top="355" visibility="0" icon="lan.png"/>
+      <network id="2" type="bridge" name="Net-vEXiface_2" left="816" top="322" visibility="0" icon="lan.png"/>
+      <network id="3" type="bridge" name="Net-vEXiface_0" left="816" top="322" visibility="0" icon="lan.png"/>
+      <network id="4" type="bridge" name="Net-7206VXRiface_17" left="813" top="181" visibility="0" icon="lan.png"/>
+      <network id="7" type="bridge" name="Net-SJVN-Firewall-Primaryiface_1" left="600" top="424" visibility="0" icon="lan.png"/>
+      <network id="8" type="bridge" name="Net-SJVN-Firewall-Secondaryiface_1" left="972" top="433" visibility="0" icon="lan.png"/>
+      <network id="11" type="bridge" name="BSNL" left="840" top="336" visibility="1" icon="Cloud-2D-Green-S.svg"/>
+      <network id="12" type="bridge" name="PowerGrid" left="840" top="228" visibility="1" icon="Cloud-2D-Yellow-S.svg"/>
+      <network id="13" type="bridge" name="Global Network" left="1299" top="270" visibility="1" icon="Globe-2D-Pink.svg"/>
+      <network id="10" type="bridge" name="Net-SJVN-MINI-FIREWALLiface_3" left="1128" top="313" visibility="0" icon="lan.png"/>
+      <network id="14" type="bridge" name="Net-SJVN-Firewall-Primaryiface_3" left="159" top="445" visibility="0" icon="lan.png"/>
+      <network id="15" type="bridge" name="Net-SJVN-Firewall-Secondaryiface_3" left="531" top="451" visibility="0" icon="lan.png"/>
+      <network id="16" type="bridge" name="Net-vEXiface_1" left="303" top="679" visibility="0" icon="lan.png"/>
+      <network id="17" type="bridge" name="Net-vEXiface_4" left="381" top="264" visibility="0" icon="lan.png"/>
+      <network id="18" type="bridge" name="Net-vEXiface_1" left="375" top="690" visibility="0" icon="lan.png"/>
+      <network id="19" type="bridge" name="Net-vEXiface_2" left="468" top="323" visibility="0" icon="lan.png"/>
+      <network id="20" type="bridge" name="Net-JUNIPER-CORE-SW2iface_3" left="291" top="328" visibility="0" icon="lan.png"/>
+      <network id="21" type="bridge" name="Net-JUNIPER-CORE-SW2iface_4" left="291" top="406" visibility="0" icon="lan.png"/>
+      <network id="22" type="bridge" name="Net-vEXiface_1" left="804" top="345" visibility="0" icon="lan.png"/>
+      <network id="23" type="bridge" name="Net-VPCiface_0" left="1038" top="237" visibility="0" icon="lan.png"/>
+      <network id="24" type="bridge" name="Net-vEXiface_2" left="798" top="419" visibility="0" icon="lan.png"/>
+      <network id="25" type="bridge" name="Net-vEXiface_1" left="795" top="363" visibility="0" icon="lan.png"/>
+      <network id="26" type="bridge" name="Net-vEXiface_2" left="795" top="369" visibility="0" icon="lan.png"/>
+      <network id="27" type="bridge" name="Net-vEXiface_3" left="795" top="325" visibility="0" icon="lan.png"/>
+      <network id="28" type="bridge" name="Net-vEXiface_1" left="789" top="262" visibility="0" icon="lan.png"/>
+      <network id="29" type="bridge" name="Net-vEXiface_2" left="789" top="350" visibility="0" icon="lan.png"/>
+      <network id="30" type="bridge" name="Net-vEXiface_2" left="849" top="428" visibility="0" icon="lan.png"/>
+      <network id="31" type="bridge" name="Net-vEXiface_3" left="849" top="264" visibility="0" icon="lan.png"/>
+      <network id="32" type="bridge" name="Net-vEXiface_1" left="792" top="306" visibility="0" icon="lan.png"/>
+      <network id="33" type="bridge" name="Net-vEXiface_2" left="792" top="306" visibility="0" icon="lan.png"/>
+      <network id="34" type="bridge" name="Net-vEXiface_1" left="747" top="384" visibility="0" icon="lan.png"/>
+      <network id="35" type="bridge" name="Net-vEXiface_3" left="813" top="306" visibility="0" icon="lan.png"/>
+      <network id="36" type="bridge" name="Net-vEXiface_1" left="810" top="483" visibility="0" icon="lan.png"/>
+      <network id="37" type="bridge" name="Net-vEXiface_2" left="810" top="483" visibility="0" icon="lan.png"/>
+      <network id="38" type="bridge" name="Net-vEXiface_3" left="810" top="483" visibility="0" icon="lan.png"/>
+      <network id="39" type="bridge" name="Net-vEXiface_0" left="945" top="582" visibility="0" icon="lan.png"/>
+      <network id="40" type="bridge" name="Net-vEXiface_2" left="813" top="279" visibility="0" icon="lan.png"/>
+      <network id="41" type="bridge" name="Net-vEXiface_3" left="813" top="639" visibility="0" icon="lan.png"/>
+      <network id="42" type="bridge" name="Net-vEXiface_2" left="945" top="699" visibility="0" icon="lan.png"/>
+      <network id="43" type="bridge" name="Net-JUNIPER-CORE-SW-1iface_5" left="435" top="298" visibility="0" icon="lan.png"/>
+      <network id="44" type="bridge" name="Net-JUNIPER-CORE-SW-1iface_6" left="435" top="271" visibility="0" icon="lan.png"/>
+      <network id="45" type="bridge" name="Net-JUNIPER-CORE-SW-1iface_7" left="435" top="282" visibility="0" icon="lan.png"/>
+      <network id="46" type="bridge" name="Net-vEXiface_4" left="813" top="546" visibility="0" icon="lan.png"/>
+      <network id="47" type="bridge" name="Net-vEXiface_4" left="813" top="651" visibility="0" icon="lan.png"/>
+      <network id="48" type="bridge" name="Net-JUNIPER-CORE-SW-1iface_10" left="435" top="251" visibility="0" icon="lan.png"/>
+    </networks>
+  </topology>
+  <objects>
+    <textobjects>
+      <textobject id="1" name="square1" type="square">
+        <data>PGRpdiBpZD0iY3VzdG9tU2hhcGUxIiBjbGFzcz0iY3VzdG9tU2hhcGUgY29udGV4dC1tZW51IHVpLXJlc2l6YWJsZSBqdGstZHJhZ2dhYmxlIGRyYWdzdG9wcGVkIHVpLXNlbGVjdGVlIHVpLXNlbGVjdGVkIGp0ay1kcmFnLXNlbGVjdGVkIGZyZWUtc2VsZWN0ZWQiIGRhdGEtcGF0aD0iMSIgc3R5bGU9ImRpc3BsYXk6IGlubGluZTsgei1pbmRleDogOTk5OyBwb3NpdGlvbjogYWJzb2x1dGU7IGxlZnQ6IDcyM3B4OyB0b3A6IDgxNnB4OyB3aWR0aDogMzg4LjJweDsgaGVpZ2h0OiAxNTQuMnB4OyIgd2lkdGg9IjEyMHB4IiBoZWlnaHQ9IjEyMHB4IiBuYW1lPSJzcXVhcmUxIj48c3ZnIHdpZHRoPSIzODkiIGhlaWdodD0iMTU0LjIwMDAwMDAwMDAwMDAyIj48cmVjdCB3aWR0aD0iMzg5IiBoZWlnaHQ9IjE1NC4yMDAwMDAwMDAwMDAwMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2U9IiMwMDAwMDAiICI9IiI+PC9yZWN0PlNvcnJ5LCB5b3VyIGJyb3dzZXIgZG9lcyBub3Qgc3VwcG9ydCBpbmxpbmUgU1ZHLjwvc3ZnPjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLWUiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1zIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtc2UgdWktaWNvbiB1aS1pY29uLWdyaXBzbWFsbC1kaWFnb25hbC1zZSIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjwvZGl2Pg==</data>
+      </textobject>
+      <textobject id="2" name="square2" type="square">
+        <data>PGRpdiBpZD0iY3VzdG9tU2hhcGUyIiBjbGFzcz0iY3VzdG9tU2hhcGUgY29udGV4dC1tZW51IHVpLXJlc2l6YWJsZSBqdGstZHJhZ2dhYmxlIGRyYWdzdG9wcGVkIHVpLXNlbGVjdGVlIiBkYXRhLXBhdGg9IjIiIHN0eWxlPSJkaXNwbGF5OiBpbmxpbmU7IHotaW5kZXg6IDk5OTsgcG9zaXRpb246IGFic29sdXRlOyBsZWZ0OiA3MjZweDsgdG9wOiA5NzVweDsgd2lkdGg6IDM4NnB4OyBoZWlnaHQ6IDE0OXB4OyIgd2lkdGg9IjEyMHB4IiBoZWlnaHQ9IjEyMHB4IiBuYW1lPSJzcXVhcmUyIj48c3ZnIHdpZHRoPSIzODIuOCIgaGVpZ2h0PSIxNDkiPjxyZWN0IHdpZHRoPSIzODIuOCIgaGVpZ2h0PSIxNDkiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlPSIjMDAwMDAwIiAiPSIiPjwvcmVjdD5Tb3JyeSwgeW91ciBicm93c2VyIGRvZXMgbm90IHN1cHBvcnQgaW5saW5lIFNWRy48L3N2Zz48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1lIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtcyIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLXNlIHVpLWljb24gdWktaWNvbi1ncmlwc21hbGwtZGlhZ29uYWwtc2UiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48L2Rpdj4=</data>
+      </textobject>
+      <textobject id="3" name="square3" type="square">
+        <data>PGRpdiBpZD0iY3VzdG9tU2hhcGUzIiBjbGFzcz0iY3VzdG9tU2hhcGUgY29udGV4dC1tZW51IHVpLXJlc2l6YWJsZSBqdGstZHJhZ2dhYmxlIGRyYWdzdG9wcGVkIiBkYXRhLXBhdGg9IjMiIHN0eWxlPSJkaXNwbGF5OiBpbmxpbmU7IHotaW5kZXg6IDk5OTsgcG9zaXRpb246IGFic29sdXRlOyBsZWZ0OiA3MjZweDsgdG9wOiAxMTI4cHg7IHdpZHRoOiAzODMuOHB4OyBoZWlnaHQ6IDE5MS4ycHg7IiB3aWR0aD0iMTIwcHgiIGhlaWdodD0iMTIwcHgiIG5hbWU9InNxdWFyZTMiPjxzdmcgd2lkdGg9IjM4My44IiBoZWlnaHQ9IjE5MS4yMDAwMDAwMDAwMDAwMiI+PHJlY3Qgd2lkdGg9IjM4My44IiBoZWlnaHQ9IjE5MS4yMDAwMDAwMDAwMDAwMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2U9IiMwMDAwMDAiICI9IiI+PC9yZWN0PlNvcnJ5LCB5b3VyIGJyb3dzZXIgZG9lcyBub3Qgc3VwcG9ydCBpbmxpbmUgU1ZHLjwvc3ZnPjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLWUiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1zIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtc2UgdWktaWNvbiB1aS1pY29uLWdyaXBzbWFsbC1kaWFnb25hbC1zZSIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjwvZGl2Pg==</data>
+      </textobject>
+      <textobject id="4" name="square4" type="square">
+        <data>PGRpdiBpZD0iY3VzdG9tU2hhcGU0IiBjbGFzcz0iY3VzdG9tU2hhcGUgY29udGV4dC1tZW51IHVpLXJlc2l6YWJsZSBqdGstZHJhZ2dhYmxlIGRyYWdzdG9wcGVkIiBkYXRhLXBhdGg9IjQiIHN0eWxlPSJkaXNwbGF5OiBpbmxpbmU7IHotaW5kZXg6IDk5OTsgcG9zaXRpb246IGFic29sdXRlOyBsZWZ0OiA3MjZweDsgdG9wOiAxMzI5cHg7IHdpZHRoOiAzODRweDsgaGVpZ2h0OiAxODguNnB4OyIgd2lkdGg9IjEyMHB4IiBoZWlnaHQ9IjEyMHB4IiBuYW1lPSJzcXVhcmU0Ij48c3ZnIHdpZHRoPSIzODQiIGhlaWdodD0iMTg4LjYwMDAwMDAwMDAwMDAyIj48cmVjdCB3aWR0aD0iMzg0IiBoZWlnaHQ9IjE4OC42MDAwMDAwMDAwMDAwMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2U9IiMwMDAwMDAiICI9IiI+PC9yZWN0PlNvcnJ5LCB5b3VyIGJyb3dzZXIgZG9lcyBub3Qgc3VwcG9ydCBpbmxpbmUgU1ZHLjwvc3ZnPjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLWUiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1zIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtc2UgdWktaWNvbiB1aS1pY29uLWdyaXBzbWFsbC1kaWFnb25hbC1zZSIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjwvZGl2Pg==</data>
+      </textobject>
+      <textobject id="5" name="square5" type="square">
+        <data>PGRpdiBpZD0iY3VzdG9tU2hhcGU1IiBjbGFzcz0iY3VzdG9tU2hhcGUgY29udGV4dC1tZW51IHVpLXJlc2l6YWJsZSBqdGstZHJhZ2dhYmxlIGRyYWdzdG9wcGVkIiBkYXRhLXBhdGg9IjUiIHN0eWxlPSJkaXNwbGF5OiBpbmxpbmU7IHotaW5kZXg6IDk5OTsgcG9zaXRpb246IGFic29sdXRlOyBsZWZ0OiA3MjNweDsgdG9wOiAxNTMwcHg7IHdpZHRoOiAzOTguOHB4OyBoZWlnaHQ6IDE5MS4ycHg7IiB3aWR0aD0iMTIwcHgiIGhlaWdodD0iMTIwcHgiIG5hbWU9InNxdWFyZTUiPjxzdmcgd2lkdGg9IjM5OC44IiBoZWlnaHQ9IjE5MS4yMDAwMDAwMDAwMDAwMiI+PHJlY3Qgd2lkdGg9IjM5OC44IiBoZWlnaHQ9IjE5MS4yMDAwMDAwMDAwMDAwMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2U9IiMwMDAwMDAiICI9IiI+PC9yZWN0PlNvcnJ5LCB5b3VyIGJyb3dzZXIgZG9lcyBub3Qgc3VwcG9ydCBpbmxpbmUgU1ZHLjwvc3ZnPjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLWUiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1zIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtc2UgdWktaWNvbiB1aS1pY29uLWdyaXBzbWFsbC1kaWFnb25hbC1zZSIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjwvZGl2Pg==</data>
+      </textobject>
+      <textobject id="6" name="square6" type="square">
+        <data>PGRpdiBpZD0iY3VzdG9tU2hhcGU2IiBjbGFzcz0iY3VzdG9tU2hhcGUgY29udGV4dC1tZW51IHVpLXJlc2l6YWJsZSBqdGstZHJhZ2dhYmxlIGRyYWdzdG9wcGVkIiBkYXRhLXBhdGg9IjYiIHN0eWxlPSJkaXNwbGF5OiBpbmxpbmU7IHotaW5kZXg6IDk5OTsgcG9zaXRpb246IGFic29sdXRlOyBsZWZ0OiAxMTU4cHg7IHRvcDogMTcyOHB4OyB3aWR0aDogNDA3LjhweDsgaGVpZ2h0OiAxOTQuNHB4OyIgd2lkdGg9IjEyMHB4IiBoZWlnaHQ9IjEyMHB4IiBuYW1lPSJzcXVhcmU2Ij48c3ZnIHdpZHRoPSI0MDcuOCIgaGVpZ2h0PSIxOTQuNCI+PHJlY3Qgd2lkdGg9IjQwNy44IiBoZWlnaHQ9IjE5NC40IiBmaWxsPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZT0iIzAwMDAwMCIgIj0iIj48L3JlY3Q+U29ycnksIHlvdXIgYnJvd3NlciBkb2VzIG5vdCBzdXBwb3J0IGlubGluZSBTVkcuPC9zdmc+PGRpdiBjbGFzcz0idWktcmVzaXphYmxlLWhhbmRsZSB1aS1yZXNpemFibGUtZSIgc3R5bGU9InotaW5kZXg6IDkwOyBkaXNwbGF5OiBibG9jazsiPjwvZGl2PjxkaXYgY2xhc3M9InVpLXJlc2l6YWJsZS1oYW5kbGUgdWktcmVzaXphYmxlLXMiIHN0eWxlPSJ6LWluZGV4OiA5MDsgZGlzcGxheTogYmxvY2s7Ij48L2Rpdj48ZGl2IGNsYXNzPSJ1aS1yZXNpemFibGUtaGFuZGxlIHVpLXJlc2l6YWJsZS1zZSB1aS1pY29uIHVpLWljb24tZ3JpcHNtYWxsLWRpYWdvbmFsLXNlIiBzdHlsZT0iei1pbmRleDogOTA7IGRpc3BsYXk6IGJsb2NrOyI+PC9kaXY+PC9kaXY+</data>
+      </textobject>
+    </textobjects>
+  </objects>
+</lab>
